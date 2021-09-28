@@ -2,7 +2,6 @@ import 'package:ancorio_rp/presentation/features/screen/screen_model.dart';
 import 'package:ancorio_rp/presentation/features/screen/screen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class Screen extends StatefulWidget {
@@ -38,7 +37,7 @@ class _ScreenState extends State<Screen> implements ScreenView {
               centerTitle: true,
             ),
             body: RawScrollbar(
-              thumbColor: const Color(0xFF150A28),
+              thumbColor: const Color(0xFF1667CB),
               isAlwaysShown: true,
               radius: const Radius.circular(20),
               thickness: 5,
