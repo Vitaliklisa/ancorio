@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'I Анкорио-RP I Role Play Minecraft server'),
+      home:
+          const MyHomePage(title: 'I Анкорио-RP I Role Play Minecraft server'),
     );
   }
 }
