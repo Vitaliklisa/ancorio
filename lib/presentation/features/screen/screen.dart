@@ -27,7 +27,7 @@ class _ScreenState extends State<Screen> implements ScreenView {
         builder: (context, model, child) {
           return Scaffold(
             backgroundColor: Colors.white,
-            appBar: AppBar(
+            appBar: AppBar(backgroundColor: Colors.blue,
               title: const Text(
                 "I Анкорио-RP I Role Play Minecraft server",
                 style: TextStyle(
