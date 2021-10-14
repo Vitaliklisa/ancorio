@@ -37,10 +37,12 @@ dependencies:
     sdk: flutter
     # Превращяет свг картинку в обычную
   flutter_svg: ^0.22.0
-    # for dependency injection
+  # for dependency injection
   get_it: ^7.2.0
   # A Flutter plugin for Google Sign In.
   google_sign_in: ^5.1.1
+  # Flutter plugin for Google Sign-In, a secure authentication system for signing in with a Google account on Web.
+  google_sign_in_web: ^0.10.0+3
   # Подсказки - грамотность
   lint: ^1.7.2
   # Соединяет view and logic

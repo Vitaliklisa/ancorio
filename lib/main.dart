@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 import 'ancorio_rp_app.dart';
 
 Future<void> main() async {
-  ///-------
 
   WidgetsFlutterBinding.ensureInitialized();
 
   /// init firebase
   await Firebase.initializeApp();
+
   /// init dependency injection
   setupLocatorUseCases();
   setupLocatorRepositories();
+
+  /// start project
   runApp(AncorioRpApp());
 }

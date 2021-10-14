@@ -48,6 +48,7 @@ class AuthModel with ChangeNotifier {
     notifyListeners();
 
     await _accountUseCases.signInWithGoogle().catchError((error) {
+      _view.displayMessage(error.toString());
       _isLoading = false;
       notifyListeners();
     });
