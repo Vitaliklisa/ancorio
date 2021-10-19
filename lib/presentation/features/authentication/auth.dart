@@ -31,7 +31,7 @@ class _AuthState extends State<Auth> implements AuthView {
     if (mounted) {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => Screen()),
+        MaterialPageRoute(builder: (_) => Screen(isAuth: true)),
         (Route<dynamic> route) => false,
       );
     }
@@ -53,30 +53,27 @@ class _AuthState extends State<Auth> implements AuthView {
   }
 
   Widget _buildAuthPage(AuthModel model) {
-    // init view
+    final ScreenSize screenSize = getScreenSizeByWidth(context);
+    final bool isSmall = screenSize == ScreenSize.small;
+    final bool isMedium = screenSize == ScreenSize.medium; // init view
     return SingleChildScrollView(
       padding: const EdgeInsets.only(bottom: 32.0),
       child: Center(
         // moves content a bit higher from center
         heightFactor: 1,
-        child: AspectRatio(
-          //controls how much picture will be visible on top of auth card
-          aspectRatio: 5/ 2,
-          child: _buildAuthCard(model),
-        ),
+        child: _buildAuthCard(model, isSmall),
       ),
     );
   }
 
-  Widget _buildAuthCard(AuthModel model) {
-    final ScreenSize screenSize = getScreenSizeByWidth(context);
-    final bool isSmall = screenSize == ScreenSize.small;
-    return Container(height: 100,
+  Widget _buildAuthCard(AuthModel model, bool isSmall) {
+    return Container(
+      height: 200,
+      width: 200,
       alignment: Alignment.center,
       decoration: AppStyles.shadowDecoration,
-      margin: isSmall
-          ? const EdgeInsets.symmetric(horizontal: 32,vertical: 32)
-          : const EdgeInsets.symmetric(horizontal: 500,vertical: 100),
+      margin:
+          EdgeInsets.symmetric(horizontal: isSmall ? 12 : 128, vertical: 40),
       child: Column(
         // the arrangement of the column content to center
         mainAxisAlignment: MainAxisAlignment.center,
@@ -94,13 +91,7 @@ class _AuthState extends State<Auth> implements AuthView {
           if (model.isLoading)
             const LoadingWidget()
           else
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildGoogleIconButton(model),
-              ],
-            ),
+            _buildGoogleIconButton(model),
         ],
       ),
     );
@@ -124,25 +115,11 @@ class _AuthState extends State<Auth> implements AuthView {
 
   Widget _buildSubtitle(AuthModel model) {
     final bool isSmall = model.screenWidth.size == ScreenSize.small;
-    return Row(children: <Widget>[
-      const Expanded(
-          child: Divider(
-        color: Colors.grey,
-        indent: AppDimens.dividerIndent * 10,
-        endIndent: AppDimens.dividerIndent,
-      ),),
-      Text(
-        'social_network',
-        style: isSmall
-            ? Theme.of(context).textTheme.subtitle2
-            : Theme.of(context).textTheme.subtitle1,
-      ),
-      const Expanded(
-          child: Divider(
-        indent: AppDimens.dividerIndent,
-        endIndent: AppDimens.dividerIndent * 10,
-        color: Colors.grey,
-      ),),
-    ],);
+    return Text(
+      'social_network',
+      style: isSmall
+          ? Theme.of(context).textTheme.subtitle2
+          : Theme.of(context).textTheme.subtitle1,
+    );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:ancorio_rp/presentation/features/authentication/auth.dart';
 import 'package:ancorio_rp/presentation/features/screen/screen.dart';
 import 'package:ancorio_rp/values/app_colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,18 +20,20 @@ class _AncorioRpAppState extends State<AncorioRpApp> {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Screen();
+            return Screen(isAuth: true);
           } else if (snapshot.hasError) {
             _widgetsBinding?.addPostFrameCallback((callback) {
               return _displayError(context, snapshot.error.toString());
             });
             return const SizedBox();
           }
-          return Auth();
+          //В это случий пользиватель не зарегестрирован
+          return Screen(isAuth: false);
         },
       ),
     );
   }
+
   void _displayError(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(message)),

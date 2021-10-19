@@ -1,3 +1,4 @@
+import 'package:ancorio_rp/presentation/features/authentication/auth.dart';
 import 'package:ancorio_rp/presentation/features/screen/screen_model.dart';
 import 'package:ancorio_rp/presentation/features/screen/screen_view.dart';
 import 'package:ancorio_rp/presentation/utils/screen_size.dart';
@@ -6,11 +7,26 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class Screen extends StatefulWidget {
+  Screen({required this.isAuth});
+
+  final bool isAuth;
+
   @override
   _ScreenState createState() => _ScreenState();
 }
 
 class _ScreenState extends State<Screen> implements ScreenView {
+  @override
+  void pushAuthPage() {
+    if (mounted) {
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (_) => Auth()),
+        (Route<dynamic> route) => false,
+      );
+    }
+  }
+
   @override
   void displayMessage(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -51,6 +67,12 @@ class _ScreenState extends State<Screen> implements ScreenView {
                   alignment: Alignment.center,
                   child: Column(
                     children: [
+                      TextButton(
+                        onPressed: widget.isAuth
+                            ? model.onLogoutPressed
+                            : model.onLoginPressed,
+                        child: Text(widget.isAuth ? 'Log out' : 'Log in'),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -60,7 +82,14 @@ class _ScreenState extends State<Screen> implements ScreenView {
                             child: Image.asset(
                               'assets/images/vk.png',
                             ),
-                          )
+                          ),
+                          FloatingActionButton(
+                            backgroundColor: Colors.red,
+                            onPressed: model.onYouTubePressed,
+                            child: Image.asset(
+                              'assets/images/YouTube.png.',
+                            ),
+                          ),
                         ],
                       ),
                       Row(
