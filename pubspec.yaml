@@ -27,11 +27,27 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  # A Flutter plugin to use the Cloud Firestore API.
+  cloud_firestore: ^2.5.3
+  #Регестрация через гугл
+  firebase_auth: ^3.1.3
+  # dlc for firebase
+  firebase_core: ^1.7.0
   flutter:
     sdk: flutter
+    # Превращяет свг картинку в обычную
   flutter_svg: ^0.22.0
+  # for dependency injection
+  get_it: ^7.2.0
+  # A Flutter plugin for Google Sign In.
+  google_sign_in: ^5.1.1
+  # Flutter plugin for Google Sign-In, a secure authentication system for signing in with a Google account on Web.
+  google_sign_in_web: ^0.10.0+3
+  # Подсказки - грамотность
   lint: ^1.7.2
+  # Соединяет view and logic
   provider: ^5.0.0
+  # кликабельная ссылку
   url_launcher: ^6.0.8
 dev_dependencies:
   flutter_test:

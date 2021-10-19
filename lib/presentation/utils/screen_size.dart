@@ -23,3 +23,14 @@ ScreenSize getScreenSizeByWidth(BuildContext context) {
     return ScreenSize.small;
   }
 }
+
+extension ScreenSizeExtension on double {
+  ScreenSize get size {
+    const _mediumWidth = 600.0;
+    if (this < _mediumWidth) {
+      return ScreenSize.small;
+    } else {
+      return ScreenSize.large;
+    }
+  }
+}

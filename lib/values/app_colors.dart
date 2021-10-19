@@ -13,4 +13,6 @@ class AppColors {
     800: Color(0xFF000000),
     900: Color(0xFF000000),
   });
+  static const Animation<Color> colorDarkLoading =
+      AlwaysStoppedAnimation<Color>(Colors.black);
 }
