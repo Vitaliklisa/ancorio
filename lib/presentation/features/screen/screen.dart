@@ -4,6 +4,7 @@ import 'package:ancorio_rp/presentation/features/screen/screen_view.dart';
 import 'package:ancorio_rp/presentation/utils/screen_size.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class Screen extends StatefulWidget {
@@ -86,8 +87,8 @@ class _ScreenState extends State<Screen> implements ScreenView {
                           FloatingActionButton(
                             backgroundColor: Colors.red,
                             onPressed: model.onYouTubePressed,
-                            child: Image.asset(
-                              'assets/images/YouTube.png.',
+                            child: SvgPicture.asset(
+                              'assets/images/YouTube.svg',
                             ),
                           ),
                         ],
