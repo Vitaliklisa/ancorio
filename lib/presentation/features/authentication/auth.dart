@@ -80,7 +80,7 @@ class _AuthState extends State<Auth> implements AuthView {
         children: [
           // build title
           Text(
-            'authorization',
+            'Регистрация',
             style: isSmall
                 ? Theme.of(context).textTheme.bodyText1
                 : Theme.of(context).textTheme.subtitle1,

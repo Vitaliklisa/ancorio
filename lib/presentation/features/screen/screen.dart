@@ -85,7 +85,6 @@ class _ScreenState extends State<Screen> implements ScreenView {
                             ),
                           ),
                           FloatingActionButton(
-                            backgroundColor: Colors.red,
                             onPressed: model.onYouTubePressed,
                             child: SvgPicture.asset(
                               'assets/images/YouTube.svg',
